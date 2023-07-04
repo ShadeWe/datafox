@@ -1,47 +1,73 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+  import Chart from "./components/Chart.vue"
+
+  export default {
+    name: 'App',
+    components: { Chart }
+  }
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div id="logo-box">
+      <img src="./assets/datafox.png" alt="datafox">
+      <label>DATA<span>FOX</span></label>
     </div>
   </header>
 
   <main>
-    <TheWelcome />
+  <div id="chart-container">
+    <div v-for="n in 10" class="chart-box">
+      <div class="chart-name">Chart #{{ n }}</div>
+      <Chart />
+    </div>
+  </div>
   </main>
 </template>
 
 <style scoped>
+
+.chart-name {
+  text-align: center;
+  font-weight: 500;
+}
+.chart-box {
+  height: 300px;
+  border: 1px solid rgb(233, 233, 233);
+  border-radius: 10px;
+  padding: 10px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+#chart-container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+#logo-box {
+  display: flex;
+  align-items: center;
+}
+
+#logo-box img {
+  width: 40px;
+}
+
+#logo-box label {
+  font-weight: 800;
+  margin-left: 8px;
+}
+
 header {
-  line-height: 1.5;
+  padding: 20px 40px 20px 40px;
+  display: flex;
+  background-color: rgb(255, 234, 221);
+  border-bottom: 1px solid rgb(255, 210, 182);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
